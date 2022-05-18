@@ -24,13 +24,17 @@ dependencies:
   share_plus: ^4.0.4
   webview_flutter:
   form_field_validator:
+  flutter_launcher_icons:
 
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo/233.png"
 
   flutter_lints: ^1.0.0
 
@@ -39,3 +43,6 @@ flutter:
 
   uses-material-design: true
 
+  assets:
+     - assets/images/
+     - assets/logo/

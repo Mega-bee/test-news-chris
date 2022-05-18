@@ -37,11 +37,10 @@ class _WebViewwState extends State<WebVieww> {
           centerTitle: true,
           leading: IconButton(
             onPressed: () {
-              controller.clearCache();
-              CookieManager().clearCookies();
+              Navigator.pop(context);
             },
             icon: Icon(
-              Icons.clear,
+              Icons.arrow_back,
             ),
           ),
           actions: [
@@ -52,7 +51,7 @@ class _WebViewwState extends State<WebVieww> {
                 }
               },
               icon: Icon(
-                Icons.arrow_back,
+                Icons.waving_hand,
               ),
             ),
             IconButton(

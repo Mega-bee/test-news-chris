@@ -4,6 +4,7 @@ import 'package:news_app/news_module/model/NewsOne.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+import '../../../Custom_page_route.dart';
 import '../../../news_details_module/ui/screen/news_details.dart';
 
 
@@ -18,7 +19,7 @@ class NewsCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) =>  NewsDetails(
+          CustomPageRoute(child:  NewsDetails(
             image: newsone.urlToImage,
             title: newsone.title,
             date: newsone.publishedAt,
