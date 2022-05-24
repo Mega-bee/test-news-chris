@@ -25,7 +25,7 @@ dependencies:
   webview_flutter:
   form_field_validator:
   flutter_launcher_icons:
-
+  lottie:
 
 
 dev_dependencies:
@@ -34,7 +34,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/logo/233.png"
+  image_path: "assets/logo/istockphoto-933421794-612x612.jpeg"
 
   flutter_lints: ^1.0.0
 

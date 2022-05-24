@@ -84,7 +84,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                   top: 16,
                   child: IconButton(
                     onPressed: () async {
-                      await Share.share("${widget.url}");
+                      await Share.share("News App:${widget.url}",subject: "News App");
                     },
                     icon: Icon(Icons.share),
                     iconSize: 20,

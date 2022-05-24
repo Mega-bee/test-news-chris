@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/splash%20screen/ui/screen_Splash.dart';
 
 import 'Auth_Module/ui/screen/login.dart';
 import 'Helpers/colors.dart';

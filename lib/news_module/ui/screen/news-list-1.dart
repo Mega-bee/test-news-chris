@@ -102,9 +102,11 @@ class _NewsListOneState extends State<NewsListOne> {
 
         TextField(
             controller: _searchQuery,
+            style: TextStyle(color: Colors.white),
             focusNode:queryFocusNode,
-            cursorColor: Colors.white,
+            cursorColor: Colors.red,
             decoration: InputDecoration(
+
                 hintText: "Search News",
                 hintStyle: TextStyle(color: Colors.white
                 ),),),
@@ -223,15 +225,13 @@ class _NewsListOneState extends State<NewsListOne> {
               Container(
                 
                 height: MediaQuery.of(context).size.height*0.8,
-                child: Expanded(flex: 1,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: news.length,
-                    itemBuilder: (context, index) {
-                      return
-                        NewsCard(news[index]);
-                    }),
-                ),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: news.length,
+                  itemBuilder: (context, index) {
+                    return
+                      NewsCard(news[index]);
+                  }),
               );
           }
           return Container();
@@ -252,7 +252,7 @@ class _NewsListOneState extends State<NewsListOne> {
 
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("Filter By date",style: TextStyle(color:Colors.white,fontSize: 12,fontWeight: FontWeight.bold),
+                  Text("Filter By date :",style: TextStyle(color:Colors.white,fontSize: 12,fontWeight: FontWeight.bold),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -271,7 +271,7 @@ class _NewsListOneState extends State<NewsListOne> {
                             fontWeight: FontWeight.bold,
                           ),
                         ):Text(
-                          _selectedDateFrom.toString().split(' ').first,
+                          "From:${_selectedDateFrom.toString().split(' ').first}",
                           style: TextStyle(fontSize: 10,color:customColor,
                             fontWeight: FontWeight.bold,
                           ),
@@ -296,7 +296,7 @@ class _NewsListOneState extends State<NewsListOne> {
                           fontWeight: FontWeight.bold,
                         ),
                       ):Text(
-                        _selectedDateTO.toString().split(' ').first,
+                        "To:${_selectedDateTO.toString().split(' ').first}",
                         style: TextStyle(fontSize: 10,color:customColor
                           ,
                           fontWeight: FontWeight.bold,
@@ -317,7 +317,7 @@ class _NewsListOneState extends State<NewsListOne> {
                             .toJson(),
                       ),
                     );
-                  },child: Text("Search",style: TextStyle(color: Colors.white),), )
+                  },child: Text("Search",style: TextStyle(color: Colors.red),), )
                 ]),
           ),
         ),
