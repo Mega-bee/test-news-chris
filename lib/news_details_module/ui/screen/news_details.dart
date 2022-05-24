@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+import '../../../Helpers/colors.dart';
 import '../webview/webview.dart';
 
 class NewsDetails extends StatefulWidget {
@@ -27,6 +28,7 @@ class _NewsDetailsState extends State<NewsDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: customColor,
       appBar: AppBar(
         title: Text("Details"),
         centerTitle: true,
@@ -51,7 +53,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                   child: Container(
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: customColor,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(28),
                     ),
@@ -59,7 +61,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                       children: [
                         Icon(
                           Icons.calendar_today,
-                          color: Colors.black,
+                          color: Colors.white,
                           size: 15,
                         ),
                         SizedBox(
@@ -69,7 +71,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                           "${DateFormat.yMMMMEEEEd().format(DateTime.parse(widget.date.toString()))}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 12,
                           ),
                         ),
@@ -96,6 +98,7 @@ class _NewsDetailsState extends State<NewsDetails> {
               child: Text(
                 "${widget.title ?? "no title"}",
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.0,
@@ -115,20 +118,18 @@ class _NewsDetailsState extends State<NewsDetails> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.grey,
+                      color: Colors.red,
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
-                  child: Expanded(
-                    child: Text(
-                      "-${timeago.format(DateTime.parse(widget.date.toString()))}",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
+                  child: Text(
+                    "-${timeago.format(DateTime.parse(widget.date.toString()))}",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
                     ),
                   ),
                 ),
@@ -139,25 +140,23 @@ class _NewsDetailsState extends State<NewsDetails> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
-              child: Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => WebVieww(
-                          url: widget.url,
-                        ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WebVieww(
+                        url: widget.url,
                       ),
-                    );
-                  },
-                  child: Text(
-                    "${widget.url}",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent,
                     ),
+                  );
+                },
+                child: Text(
+                  "${widget.url}",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green[700],
                   ),
                 ),
               ),

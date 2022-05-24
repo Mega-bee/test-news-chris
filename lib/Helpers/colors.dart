@@ -10,6 +10,6 @@ Map<int, Color> color = const {
   600: Color.fromRGBO(136, 14, 79, .7),
   700: Color.fromRGBO(136, 14, 79, .8),
   800: Color.fromRGBO(136, 14, 79, .9),
-  900: Color.fromRGBO(136, 14, 79, 1),
+  900: Color.fromRGBO(4, 31, 206, 1.0),
 };
-MaterialColor customColor = MaterialColor(0xFFeb484b, color);
+MaterialColor customColor = MaterialColor(0xFF032357, color);

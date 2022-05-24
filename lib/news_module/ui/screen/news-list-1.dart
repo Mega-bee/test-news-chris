@@ -82,11 +82,23 @@ class _NewsListOneState extends State<NewsListOne> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: customColor,
       appBar: AppBar(
+        toolbarHeight:MediaQuery.of(context).size.height/20,
+    leading: Container(),
+
+
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(30),
+
+        ),),
         elevation: 0,
         automaticallyImplyLeading: false,
         title:
-        _onsearch==true?Text("Popular News"):
+        _onsearch==true?Row(children:[ Text("Popular "),
+          Text("News",style: TextStyle(color: Colors.red),),
+        ]):
 
         TextField(
             controller: _searchQuery,
@@ -130,7 +142,7 @@ class _NewsListOneState extends State<NewsListOne> {
                       child: Text("Popularity")),
                   PopupMenuItem(
                       value: 2,
-                      child: Text("PublishidAt")),
+                      child: Text("PublishedAt")),
                 ];
               },
           onSelected: (value){
@@ -154,7 +166,7 @@ class _NewsListOneState extends State<NewsListOne> {
                       Urls.NEWS_ONE,
                       requestType: RequestType.get,
                       query: FilterNewsRequest(searchText: _searchQuery.text,
-                        sortBy:"PublishidAt",
+                        sortBy:"PublishedAt",
                         fromDate: _selectedDateFrom.toString(),
                         toDate: _selectedDateTO.toString(),
                       )
@@ -170,85 +182,16 @@ class _NewsListOneState extends State<NewsListOne> {
       Column(children:[
 
 
-          Container(
-            height: MediaQuery.of(context).size.height*0.06 ,
-            color:customColor ,
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text("Filter By date",style: TextStyle(color:Colors.white,fontSize: 12,fontWeight: FontWeight.bold),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  color: Colors.white,
-                  height: MediaQuery.of(context).size.height*0.031,
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      primary: Theme.of(context).primaryColor,
-                    ),
-                    child:
-                    _selectedDateFrom==null?
-                    Text(
-                      'From',
-                      style: TextStyle(fontSize: 13,color:customColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ):Text(
-                      _selectedDateFrom.toString().split(' ').first,
-                      style: TextStyle(fontSize: 13,color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: _presentDatePickerFrom,
-                  ),
-                ),
-              ),
 
-              Container(
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height*0.031,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Theme.of(context).primaryColor,
-                  ),
-                  child:
-                  _selectedDateTO==null?
-                  Text(
-                    'TO',
-                    style: TextStyle(fontSize: 13,color: customColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ):Text(
-                    _selectedDateTO.toString().split(' ').first,
-                  style: TextStyle(fontSize: 13,color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                  onPressed: _presentDatePickerTO,
-                ),
-              ),
-              TextButton(onPressed: (){
-                newsListBloc.add(
-                  FetchData(
-                    Urls.NEWS_ONE,
-                    requestType: RequestType.get,
-                    query: FilterNewsRequest(searchText: _searchQuery.text,
-                    fromDate: _selectedDateFrom.toString(),
-                      toDate: _selectedDateTO.toString(),
-                    )
-                        .toJson(),
-                  ),
-                );
-              },child: Text("Search"), )
-            ]),
-          ),
        BlocBuilder<DataLoaderBloc, GlobalState>(
             bloc: newsListBloc,
             builder: (context, state) {
           if (state is Loading) {
             print("Loading");
-            return Center(
-              child: CircularProgressIndicator(),
+            return Expanded(flex: 1,
+              child: Center(
+                child: CircularProgressIndicator(color: Colors.white),
+              ),
             );
           }
           else if (state is ConnectionError) {
@@ -278,19 +221,106 @@ class _NewsListOneState extends State<NewsListOne> {
             }
             return
               Container(
-                height: MediaQuery.of(context).size.height*0.80,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: news.length,
-                  itemBuilder: (context, index) {
-                    return
-                      NewsCard(news[index]);
-                  }),
+                
+                height: MediaQuery.of(context).size.height*0.8,
+                child: Expanded(flex: 1,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: news.length,
+                    itemBuilder: (context, index) {
+                      return
+                        NewsCard(news[index]);
+                    }),
+                ),
               );
           }
           return Container();
         }),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Container(
 
+            decoration: BoxDecoration(
+                border: Border.all(
+                    color: Colors.transparent
+
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                color: Colors.transparent
+            ),
+            height: MediaQuery.of(context).size.height*0.079 ,
+
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("Filter By date",style: TextStyle(color:Colors.white,fontSize: 12,fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      color: Colors.white,
+                      height: MediaQuery.of(context).size.height*0.034,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          primary: Theme.of(context).primaryColor,
+                        ),
+                        child:
+                        _selectedDateFrom==null?
+                        Text(
+                          'From',
+                          style: TextStyle(fontSize: 10,color:customColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ):Text(
+                          _selectedDateFrom.toString().split(' ').first,
+                          style: TextStyle(fontSize: 10,color:customColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: _presentDatePickerFrom,
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    color: Colors.white,
+                    height: MediaQuery.of(context).size.height*0.034,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        primary: Theme.of(context).primaryColor,
+                      ),
+                      child:
+                      _selectedDateTO==null?
+                      Text(
+                        'TO',
+                        style: TextStyle(fontSize: 10,color: customColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ):Text(
+                        _selectedDateTO.toString().split(' ').first,
+                        style: TextStyle(fontSize: 10,color:customColor
+                          ,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: _presentDatePickerTO,
+                    ),
+                  ),
+                  TextButton(onPressed: (){
+                    newsListBloc.add(
+                      FetchData(
+                        Urls.NEWS_ONE,
+                        requestType: RequestType.get,
+                        query: FilterNewsRequest(searchText: _searchQuery.text,
+                          fromDate: _selectedDateFrom.toString(),
+                          toDate: _selectedDateTO.toString(),
+                        )
+                            .toJson(),
+                      ),
+                    );
+                  },child: Text("Search",style: TextStyle(color: Colors.white),), )
+                ]),
+          ),
+        ),
     ]));
   }
 }

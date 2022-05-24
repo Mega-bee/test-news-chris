@@ -35,7 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
     var mediaQueryWidth = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+
+        backgroundColor:customColor,
         body: BlocProvider(
           create: (BuildContext context) => DataLoaderBloc(Default()),
           child: SingleChildScrollView(
@@ -58,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Text(
                                 "Welcome To ",
                                 style: TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.white,
                                     fontSize: 28,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Roboto-Bold'),
@@ -70,10 +71,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                child: const Text(
+                                child:  Text(
                                   " News",
                                   style: TextStyle(
-                                      color: Color(0xFFeb484b),
+                                      color:Colors.red,
                                       fontSize: 28,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Roboto-Regular'),
@@ -83,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: const Text(
                                   " App",
                                   style: TextStyle(
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       fontSize: 25,
                                       fontFamily: 'Roboto-Regular'),
                                 ),
@@ -107,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: const TextStyle(fontSize: 20),
                             controller: apiKey,
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.key),
+                              prefixIcon: Icon(Icons.key,color: Colors.red,),
                               filled: true,
                               fillColor: Colors.white,
                               hintText: " Api Key",
@@ -150,10 +151,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           }
                         },
-                        child: const Text(
+                        child:  Text(
                           'Log In',
                           style: TextStyle(
-                              color: Colors.white,
+                              color:Colors.red,
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Roboto-Bold'),
@@ -162,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: mediaQueryWidth * 0.35,
                               vertical: mediaQueryHeight * 0.025),
-                          primary: const Color.fromRGBO(230, 50, 53, 1),
+                          primary: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40.0),
                           ),
