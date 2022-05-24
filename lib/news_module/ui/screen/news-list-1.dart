@@ -83,6 +83,7 @@ class _NewsListOneState extends State<NewsListOne> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         automaticallyImplyLeading: false,
         title:
         _onsearch==true?Text("Popular News"):
@@ -169,74 +170,78 @@ class _NewsListOneState extends State<NewsListOne> {
       Column(children:[
 
 
-          Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text("Filter By date",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                color: customColor,
+          Container(
+            height: MediaQuery.of(context).size.height*0.06 ,
+            color:customColor ,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text("Filter By date",style: TextStyle(color:Colors.white,fontSize: 12,fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height*0.031,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Theme.of(context).primaryColor,
+                    ),
+                    child:
+                    _selectedDateFrom==null?
+                    Text(
+                      'From',
+                      style: TextStyle(fontSize: 13,color:customColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ):Text(
+                      _selectedDateFrom.toString().split(' ').first,
+                      style: TextStyle(fontSize: 13,color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: _presentDatePickerFrom,
+                  ),
+                ),
+              ),
+
+              Container(
+                color: Colors.white,
                 height: MediaQuery.of(context).size.height*0.031,
                 child: TextButton(
                   style: TextButton.styleFrom(
                     primary: Theme.of(context).primaryColor,
                   ),
                   child:
-                  _selectedDateFrom==null?
+                  _selectedDateTO==null?
                   Text(
-                    'From',
-                    style: TextStyle(fontSize: 13,color: Colors.white,
+                    'TO',
+                    style: TextStyle(fontSize: 13,color: customColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ):Text(
-                    _selectedDateFrom.toString().split(' ').first,
-                    style: TextStyle(fontSize: 13,color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: _presentDatePickerFrom,
-                ),
-              ),
-            ),
-
-            Container(
-              color: customColor,
-              height: MediaQuery.of(context).size.height*0.031,
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  primary: Theme.of(context).primaryColor,
-                ),
-                child:
-                _selectedDateTO==null?
-                Text(
-                  'TO',
+                    _selectedDateTO.toString().split(' ').first,
                   style: TextStyle(fontSize: 13,color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
-                ):Text(
-                  _selectedDateTO.toString().split(' ').first,
-                style: TextStyle(fontSize: 13,color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                ),
+                  onPressed: _presentDatePickerTO,
                 ),
               ),
-                onPressed: _presentDatePickerTO,
-              ),
-            ),
-            TextButton(onPressed: (){
-              newsListBloc.add(
-                FetchData(
-                  Urls.NEWS_ONE,
-                  requestType: RequestType.get,
-                  query: FilterNewsRequest(searchText: _searchQuery.text,
-                  fromDate: _selectedDateFrom.toString(),
-                    toDate: _selectedDateTO.toString(),
-                  )
-                      .toJson(),
-                ),
-              );
-            },child: Text("Search"), )
-          ]),
+              TextButton(onPressed: (){
+                newsListBloc.add(
+                  FetchData(
+                    Urls.NEWS_ONE,
+                    requestType: RequestType.get,
+                    query: FilterNewsRequest(searchText: _searchQuery.text,
+                    fromDate: _selectedDateFrom.toString(),
+                      toDate: _selectedDateTO.toString(),
+                    )
+                        .toJson(),
+                  ),
+                );
+              },child: Text("Search"), )
+            ]),
+          ),
        BlocBuilder<DataLoaderBloc, GlobalState>(
             bloc: newsListBloc,
             builder: (context, state) {
@@ -248,27 +253,23 @@ class _NewsListOneState extends State<NewsListOne> {
           }
           else if (state is ConnectionError) {
             print("Connection error");
-            return Expanded(
-              child: ConnectionErrorScreen(
-                  errorMessage: 'connectionError',
-                  retry: () {
-                    BlocProvider.of<DataLoaderBloc>(context)
-                      ..add(FetchData(Urls.NEWS_ONE,
-                          requestType: RequestType.get));
-                  }),
-            );
+            return ConnectionErrorScreen(
+                errorMessage: 'connectionError',
+                retry: () {
+                  BlocProvider.of<DataLoaderBloc>(context)
+                    ..add(FetchData(Urls.NEWS_ONE,
+                        requestType: RequestType.get));
+                });
           }
           else if (state is Error) {
             print("Error try again please");
-            return Expanded(
-              child: ConnectionErrorScreen(
-                  errorMessage: state.errorMessage,
-                  retry: () {
-                    BlocProvider.of<DataLoaderBloc>(context)
-                      ..add(FetchData(Urls.NEWS_ONE,
-                          requestType: RequestType.get));
-                  }),
-            );
+            return ConnectionErrorScreen(
+                errorMessage: state.errorMessage,
+                retry: () {
+                  BlocProvider.of<DataLoaderBloc>(context)
+                    ..add(FetchData(Urls.NEWS_ONE,
+                        requestType: RequestType.get));
+                });
           } else if (state is Successfully) {
             print("Successfully");
             news.clear();

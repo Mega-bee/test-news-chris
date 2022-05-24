@@ -15,7 +15,7 @@ class FilterNewsRequest {
     data['from']= this.fromDate;
     data['to']= this.toDate;
     data['sortBy']= this.sortBy;
-    data['apiKey']="7f01a1f8c35e43d89dd699dcf501cfea";
+    data['apiKey']="a1a15821dc0e4d7cb89bd20d3f1e2202";
     return data;
   }
 }
