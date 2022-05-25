@@ -96,7 +96,7 @@ class _NewsListOneState extends State<NewsListOne> {
         elevation: 0,
         automaticallyImplyLeading: false,
         title:
-        _onsearch==true?Row(children:[ Text("Popular "),
+        _onsearch==true?Row(children:[ Text("Popular ",),
           Text("News",style: TextStyle(color: Colors.red),),
         ]):
 
@@ -131,18 +131,22 @@ class _NewsListOneState extends State<NewsListOne> {
     },
                icon:Icon(Icons.search)),
           PopupMenuButton(
+            color: customColor,
               icon: Icon(Icons.sort),
               itemBuilder: (context){
                 return [
                   PopupMenuItem(
+
                       height: 2,
-                      textStyle: TextStyle(color:customColor),
+                      textStyle: TextStyle(color:Colors.red),
                       value: 0,
                       child: Text("Sort By")),
                   PopupMenuItem(
+                      textStyle: TextStyle(color:Colors.white),
                       value: 1,
                       child: Text("Popularity")),
                   PopupMenuItem(
+                      textStyle: TextStyle(color:Colors.white),
                       value: 2,
                       child: Text("PublishedAt")),
                 ];

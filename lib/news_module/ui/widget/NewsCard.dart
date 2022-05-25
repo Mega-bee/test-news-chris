@@ -46,6 +46,7 @@ class NewsCard extends StatelessWidget {
                         Center(
                       child: CircularProgressIndicator(
                         value: progress.progress,
+                        color: Colors.white,
                       ),
                     ),
                     imageUrl: newsone.urlToImage.toString(),
@@ -146,12 +147,16 @@ class NewsCard extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0).copyWith(bottom: 14),
-                child: Text(
-                  "-${timeago.format(DateTime.parse(newsone.publishedAt.toString()))}",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w200,
-                    color: Colors.red
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    "${timeago.format(DateTime.parse(newsone.publishedAt.toString()))}",
+
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w200,
+                      color: Colors.red
+                    ),
                   ),
                 ),
               ),

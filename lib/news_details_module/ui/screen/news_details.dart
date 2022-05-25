@@ -61,7 +61,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                       children: [
                         Icon(
                           Icons.calendar_today,
-                          color: Colors.white,
+                          color: Colors.red,
                           size: 15,
                         ),
                         SizedBox(
@@ -84,7 +84,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                   top: 16,
                   child: IconButton(
                     onPressed: () async {
-                      await Share.share("News App:${widget.url}",subject: "News App");
+                      await Share.share("By News App: \n ${widget.url}",subject: "News App");
                     },
                     icon: Icon(Icons.share),
                     iconSize: 20,
@@ -92,6 +92,21 @@ class _NewsDetailsState extends State<NewsDetails> {
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "${widget.author ?? "no author"}",
+
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
@@ -106,37 +121,25 @@ class _NewsDetailsState extends State<NewsDetails> {
               ),
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.01,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
-                  child: Text(
-                    "${widget.author ?? "no author"}",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
-                  child: Text(
-                    "-${timeago.format(DateTime.parse(widget.date.toString()))}",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
-                  ),
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(right: 20,left: 12),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children:[ Text("For More Info Visit The Link Bellow",style: TextStyle(color: Colors.grey,
+                  fontSize: 12,
+                  ),),
+                    // Image.asset("assets/images/emoji.jpeg",width: 18,height: 18,color: Colors.grey,)
+
+
+
+                ]),
+              ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
+              width: MediaQuery.of(context).size.width * 0.01,
             ),
             Padding(
               padding: const EdgeInsets.all(16.0).copyWith(bottom: 0),
@@ -161,6 +164,29 @@ class _NewsDetailsState extends State<NewsDetails> {
                 ),
               ),
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    "${timeago.format(DateTime.parse(widget.date.toString()))}",
+textAlign: TextAlign.end,
+                    style: TextStyle(
+                      fontSize: 12,
+
+                      color: Colors.red,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+
           ],
         ),
       ),

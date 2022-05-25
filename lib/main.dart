@@ -3,8 +3,11 @@ import 'package:news_app/splash%20screen/ui/screen_Splash.dart';
 
 import 'Auth_Module/ui/screen/login.dart';
 import 'Helpers/colors.dart';
+import 'hive/hive.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HiveSetUp.init();
   runApp(const MyApp());
 }
 
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: customColor
       ),
-      home: LoginScreen()
+      home: SplashScreen()
     );
   }
 }

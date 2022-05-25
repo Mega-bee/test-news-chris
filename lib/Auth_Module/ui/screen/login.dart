@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/hive/hive.dart';
 import 'package:news_app/network/WebUrl.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import '../../../Helpers/colors.dart';
 import '../../../network/DataLoaderBloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -57,38 +58,41 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
                               Text(
-                                "Welcome To ",
+                                "Welcome To Live",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 28,
+                                    fontSize: 38,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Roboto-Bold'),
                               ),
                             ],
                           ),
+                          // SizedBox(h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+
                               Container(
-                                child:  Text(
-                                  " News",
-                                  style: TextStyle(
-                                      color:Colors.red,
-                                      fontSize: 28,
+
+                                child: TextLiquidFill(
+                                  text:" News",
+                                  boxHeight: 90,
+                                  loadDuration: Duration(seconds: 1),
+                                  waveDuration: Duration(seconds: 1),
+                                  loadUntil: 0.8,
+                                  boxWidth: 105,
+                                  boxBackgroundColor:customColor,
+                                  waveColor: Colors.red,
+                                  textStyle: TextStyle(
+                                      color:Colors.white,
+
+                                      fontSize: 38,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Roboto-Regular'),
                                 ),
                               ),
-                              Container(
-                                child: const Text(
-                                  " App",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25,
-                                      fontFamily: 'Roboto-Regular'),
-                                ),
-                              ),
+
                             ],
                           ),
                         ],
@@ -143,6 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           }else{
                             {
+                              AuthPrefsHelper().setToken(Urls.apiToken);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

@@ -26,6 +26,9 @@ dependencies:
   form_field_validator:
   flutter_launcher_icons:
   lottie:
+  animated_text_kit:
+  hive:
+  hive_flutter:
 
 
 dev_dependencies:
