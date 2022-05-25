@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/news_module/ui/widget/NewsCard.dart';
 
+import '../../../Auth_Module/ui/screen/login.dart';
 import '../../../Helpers/colors.dart';
+import '../../../hive/hive.dart';
 import '../../Filter/FilterRequest.dart';
 import '../../model/NewsOne.dart';
 import '../../../Views/connactionError.dart';
@@ -84,8 +86,16 @@ class _NewsListOneState extends State<NewsListOne> {
     return Scaffold(
       backgroundColor: customColor,
       appBar: AppBar(
+
         toolbarHeight:MediaQuery.of(context).size.height/25,
-    leading: Container(),
+    leading: IconButton(icon: Icon(Icons.logout),onPressed:() =>
+      AuthPrefsHelper().deleteToken().then((value) =>    Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+              (route) => false))
+     ),
+
+
+
 
 
         shape: RoundedRectangleBorder(
@@ -206,36 +216,33 @@ class _NewsListOneState extends State<NewsListOne> {
                 children: [
                   // Text("Filter By date :",style: TextStyle(color:Colors.white,fontSize: 12,fontWeight: FontWeight.bold),
                   // ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      color: Colors.white,
-                      height: MediaQuery.of(context).size.height*0.030,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          primary: Theme.of(context).primaryColor,
-                        ),
-                        child:
-                        _selectedDateFrom==null?
-                        Text(
-                          'From',
-                          style: TextStyle(fontSize: 10,color:customColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ):Text(
-                          "From:${_selectedDateFrom.toString().split(' ').first}",
-                          style: TextStyle(fontSize: 10,color:customColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: _presentDatePickerFrom,
+                  Container(
+                    color: Colors.white,
+                    height: MediaQuery.of(context).size.height*0.034,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        primary: Theme.of(context).primaryColor,
                       ),
+                      child:
+                      _selectedDateFrom==null?
+                      Text(
+                        'From',
+                        style: TextStyle(fontSize: 10,color:customColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ):Text(
+                        "From:${_selectedDateFrom.toString().split(' ').first}",
+                        style: TextStyle(fontSize: 10,color:customColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: _presentDatePickerFrom,
                     ),
                   ),
 
                   Container(
                     color: Colors.white,
-                    height: MediaQuery.of(context).size.height*0.030,
+                    height: MediaQuery.of(context).size.height*0.034,
                     child: TextButton(
                       style: TextButton.styleFrom(
                         primary: Theme.of(context).primaryColor,

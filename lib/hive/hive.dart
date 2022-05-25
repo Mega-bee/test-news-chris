@@ -25,5 +25,7 @@ class AuthPrefsHelper {
     return box.get('apikey');
   }
 
-
+Future <void> deleteToken()async{
+    await box.clear();
+}
 }

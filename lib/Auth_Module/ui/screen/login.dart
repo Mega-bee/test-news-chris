@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   loadDuration: Duration(seconds: 1),
                                   waveDuration: Duration(seconds: 1),
                                   loadUntil: 0.8,
-                                  boxWidth: 105,
+                                  boxWidth: 125,
                                   boxBackgroundColor:customColor,
                                   waveColor: Colors.red,
                                   textStyle: TextStyle(
