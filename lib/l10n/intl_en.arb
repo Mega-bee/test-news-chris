@@ -1,0 +1,24 @@
+{
+  "@@locale": "en",
+  "Popular":  "Popular",
+  "NEWS": "News",
+  "NEWS1": "News",
+  "WelcomeToLive":"Welcome To Live",
+  "TO": "TO",
+  "LOGIN": "Log In",
+  "Required": "Required *",
+  "NotavalidKey": "Not a valid Key",
+  "FROM": "FROM",
+  "SearchByDate": "Search By Date",
+  "languages": "languages",
+  "English": "English",
+  "Arabic":"Arabic",
+  "Settings": "Settings",
+  "theme": "Theme",
+  "dark":  "Dark",
+  "white": "white",
+  "logout": "Logout",
+  "Yes":"Yes",
+  "No":"No"
+
+}
