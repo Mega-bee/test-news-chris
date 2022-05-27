@@ -1,3 +1,4 @@
+
 class FilterNewsRequest {
   String? searchText;
   String? searchTextInTitle;

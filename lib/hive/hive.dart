@@ -10,7 +10,7 @@ class HiveSetUp {
 
   static Future<void> publicBoxes() async {
     await Hive.openBox('Authorization');
-
+    await Hive.openBox('language');
   }
 }
 class AuthPrefsHelper {
@@ -28,4 +28,14 @@ class AuthPrefsHelper {
 Future <void> deleteToken()async{
     await box.clear();
 }
+}
+class LanguageHelper{
+  var box2 =Hive.box('language');
+
+  void setLanguage(String name){
+    box2.put('lang',name);
+  }
+  String? getLanguage(){
+    return box2.get('lang');
+  }
 }

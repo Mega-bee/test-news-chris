@@ -4,6 +4,7 @@ import 'package:news_app/hive/hive.dart';
 import 'package:news_app/network/WebUrl.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import '../../../Helpers/colors.dart';
+import '../../../generated/l10n.dart';
 import '../../../network/DataLoaderBloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -56,9 +57,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children:  [
                               Text(
-                                "Welcome To Live",
+                                S.of(context).WelcomeToLive,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 38,
@@ -76,18 +77,17 @@ class _LoginScreenState extends State<LoginScreen> {
                               Container(
 
                                 child: TextLiquidFill(
-                                  text:" News",
-                                  boxHeight: 90,
+                                  text:S.of(context).NEWS1,
+                                  boxHeight: 100,
                                   loadDuration: Duration(seconds: 1),
-                                  waveDuration: Duration(seconds: 1),
-                                  loadUntil: 0.8,
+                                  waveDuration: Duration(seconds: 2),
+                                  loadUntil: 0.82,
                                   boxWidth: 125,
                                   boxBackgroundColor:customColor,
                                   waveColor: Colors.red,
                                   textStyle: TextStyle(
                                       color:Colors.white,
-
-                                      fontSize: 38,
+                                      fontSize: 34,
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Roboto-Regular'),
                                 ),
@@ -128,8 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             validator: MultiValidator([
-                              RequiredValidator(errorText: 'Required *'),
-                              EmailValidator(errorText: 'Not a valid Key'),
+                              RequiredValidator(errorText:S.of(context).Required),
+                              EmailValidator(errorText:S.of(context).NotavalidKey),
                             ]),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (apiKey.text.isEmpty) {
                             _formKey.currentState!.validate();
                           } else if(apiKey.text != Urls.apiToken){
-                            Text("Not a valid key");
+                            Text(S.of(context).NotavalidKey);
 
                           }else{
                             {
@@ -157,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         },
                         child:  Text(
-                          'Log In',
+                            S.of(context).LOGIN,
                           style: TextStyle(
                               color:Colors.red,
                               fontSize: 18,
