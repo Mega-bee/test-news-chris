@@ -28,7 +28,7 @@ class _NewsDetailsState extends State<NewsDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: customColor,
+      backgroundColor: PrimaryColor,
       appBar: AppBar(
         title: Text("Details"),
         centerTitle: true,
@@ -53,7 +53,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                   child: Container(
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                      color: customColor,
+                      color: PrimaryColor,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(28),
                     ),

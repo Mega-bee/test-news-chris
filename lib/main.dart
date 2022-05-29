@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:news_app/localization/localization_service.dart';
 import 'package:news_app/splash%20screen/ui/screen_Splash.dart';
+import 'package:news_app/theme/theme_service.dart';
 import 'Auth_Module/ui/screen/login.dart';
 import 'Helpers/colors.dart';
 import 'generated/l10n.dart';
@@ -23,10 +24,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late LanguageHelper preferencesHelper ;
+
 
  late LocalizationService _localizationService ;
- late String lang ='en';
+ late String lang ;
+ late AppThemeDataService _appThemeDataService;
+ late ThemeData activeTheme;
   // This widget is the root of your application.
 
   // This widget is the root of your application.
@@ -49,9 +52,7 @@ class _MyAppState extends State<MyApp> {
 
       ],
       supportedLocales: S.delegate.supportedLocales,
-      theme: ThemeData(
-        primarySwatch: customColor
-      ),
+      theme:activeTheme,
       home: SplashScreen()
     );
   }
@@ -60,12 +61,25 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
    _localizationService =LocalizationService();
+    _appThemeDataService =AppThemeDataService();
    lang = _localizationService.getLanguage();
+    activeTheme =_appThemeDataService.getActiveTheme();
     _localizationService.localizationStream.listen((event) {
       lang = event;
       setState(() {
 
       });
+    });
+
+
+    _appThemeDataService.darkModeStream.listen((event) {
+      activeTheme =event;
+      setState(() {
+
+      });
+
+
+
     });
   }
 }

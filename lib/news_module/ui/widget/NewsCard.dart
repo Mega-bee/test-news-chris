@@ -31,7 +31,7 @@ class NewsCard extends StatelessWidget {
       },
       child: Card(
           clipBehavior: Clip.antiAlias,
-          color: customColor,
+          color: PrimaryColor,
           shadowColor: Colors.white,
           elevation: 3,
           shape: RoundedRectangleBorder(
@@ -73,7 +73,7 @@ class NewsCard extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
-                        color: customColor,
+                        color: PrimaryColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(28),
                       ),

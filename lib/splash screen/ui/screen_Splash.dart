@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: customColor,
+      backgroundColor: PrimaryColor,
       body: Center(
           child: Lottie.asset(
             "assets/images/96921-byjus-new.json",

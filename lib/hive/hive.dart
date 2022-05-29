@@ -11,6 +11,7 @@ class HiveSetUp {
   static Future<void> publicBoxes() async {
     await Hive.openBox('Authorization');
     await Hive.openBox('language');
+    await Hive.openBox('themeColor');
   }
 }
 class AuthPrefsHelper {
@@ -37,5 +38,15 @@ class LanguageHelper{
   }
   String? getLanguage(){
     return box2.get('lang');
+  }
+}
+class ThemeHelper{
+  var box3 =Hive.box('themeColor');
+
+  void setTheme(bool isDark){
+    box3.put('theme', isDark);
+  }
+  bool? getisDark(){
+    return box3.get('theme');
   }
 }

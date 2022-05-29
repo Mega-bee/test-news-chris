@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/theme/theme_service.dart';
 
 import '../../Auth_Module/ui/screen/login.dart';
 import '../../CustomAlertDialog/CustomAlert.dart';
@@ -18,7 +19,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: customColor,
+      backgroundColor: PrimaryColor,
       appBar:AppBar(
         title: Text(S.of(context).Settings),
         leading: IconButton(onPressed: (){
@@ -29,11 +30,11 @@ class _SettingsState extends State<Settings> {
         ),
       ) ,
       body: Column(children: [
-SizedBox(height: 12,),
+SizedBox(height: MediaQuery.of(context).size.height*0.1,),
         Card(
           elevation: 5,
           shadowColor: Colors.red,
-          color: customColor,
+          color: PrimaryColor,
           child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -41,7 +42,7 @@ SizedBox(height: 12,),
             children: [
             Text(S.of(context).languages,style: TextStyle(color: Colors.white),),
             PopupMenuButton(
-              color: customColor,
+              color: PrimaryColor,
               icon: Icon(Icons.language,color: Colors.red,),
               itemBuilder: (context) {
                 return [
@@ -74,10 +75,11 @@ SizedBox(height: 12,),
             ),
           ],),
         ),),
+        SizedBox(height: MediaQuery.of(context).size.height*0.03,),
         Card(
           elevation: 5,
           shadowColor: Colors.red,
-          color: customColor,
+          color: PrimaryColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -85,8 +87,8 @@ SizedBox(height: 12,),
               children: [
                 Text(S.of(context).theme,style: TextStyle(color: Colors.white),),
                 PopupMenuButton(
-                  color: customColor,
-                  icon: Icon(Icons.language,color: Colors.red,),
+                  color: PrimaryColor,
+                  icon: Icon(Icons.color_lens,color: Colors.red,),
                   itemBuilder: (context) {
                     return [
                       PopupMenuItem(
@@ -106,13 +108,13 @@ SizedBox(height: 12,),
                   },
                   onSelected: (value) {
                     if (value == 1) {
-                      // LocalizationService().setLanguage('en');
-                      // setState(() {
-                      //   S.load(Locale('en'));
-                      // });
+
+                     AppThemeDataService().switchDarkMode(true);
+
                     }
                     if (value == 2) {
-                      // LocalizationService().setLanguage('ar');
+                      AppThemeDataService().switchDarkMode(false);
+
                     }
                   },
                 ),
@@ -143,7 +145,7 @@ SizedBox(height: 12,),
             ),
           );
         },
-        label:  Text(S.of(context).logout,style: TextStyle(color: customColor),),
+        label:  Text(S.of(context).logout,style: TextStyle(color: PrimaryColor),),
         icon: const Icon(Icons.logout,color: Colors.red,),
         backgroundColor: Colors.grey,
       ),

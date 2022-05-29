@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
 
-        backgroundColor:customColor,
+        backgroundColor:PrimaryColor,
         body: BlocProvider(
           create: (BuildContext context) => DataLoaderBloc(Default()),
           child: SingleChildScrollView(
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   waveDuration: Duration(seconds: 2),
                                   loadUntil: 0.82,
                                   boxWidth: 125,
-                                  boxBackgroundColor:customColor,
+                                  boxBackgroundColor:PrimaryColor,
                                   waveColor: Colors.red,
                                   textStyle: TextStyle(
                                       color:Colors.white,

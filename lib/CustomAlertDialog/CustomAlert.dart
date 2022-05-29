@@ -27,7 +27,7 @@ class _CustomLogOutDialog extends State<CustomLogOutDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: customColor,
+      backgroundColor: PrimaryColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       title: Text(
         widget.title,
