@@ -161,7 +161,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.green[700],
+                    color: ThemeHelper().getisDark()?Colors.blue : Colors.green
                   ),
                 ),
               ),

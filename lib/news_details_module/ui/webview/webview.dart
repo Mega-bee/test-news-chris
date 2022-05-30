@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/Helpers/colors.dart';
+import 'package:news_app/hive/hive.dart';
 import 'package:webview_flutter/platform_interface.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:io';
@@ -33,6 +35,7 @@ class _WebViewwState extends State<WebVieww> {
       },
       child: Scaffold(
         appBar: AppBar(
+
           title: Text("Webview"),
           centerTitle: true,
           leading: IconButton(
@@ -51,7 +54,7 @@ class _WebViewwState extends State<WebVieww> {
                 }
               },
               icon: Icon(
-                Icons.waving_hand,
+                Icons.backspace,
               ),
             ),
             IconButton(
@@ -62,7 +65,9 @@ class _WebViewwState extends State<WebVieww> {
             )
           ],
         ),
-        body: Column(
+        body:
+
+        Column(
           children: [
             LinearProgressIndicator(
               value: progress,
@@ -70,8 +75,12 @@ class _WebViewwState extends State<WebVieww> {
               backgroundColor: Colors.black,
             ),
             Expanded(
+
               child: WebView(
+                zoomEnabled: true,
+                 backgroundColor:ThemeHelper().getisDark()? Colors.grey[600] :Colors.grey[400],
                 javascriptMode: JavascriptMode.unrestricted,
+
                 initialUrl: widget.url,
                 onWebViewCreated: (controller) {
                   this.controller = controller;

@@ -14,7 +14,7 @@ class AppThemeDataService {
    ThemeHelper _themeHelper =ThemeHelper();
 
   static Color get PrimColor {
-    return Colors.black;
+    return PrimaryColor;
   }
 
   ThemeData getActiveTheme() {
@@ -63,6 +63,10 @@ class AppThemeDataService {
               return PrimaryColor;
             }),
           ),
+
+          appBarTheme: AppBarTheme(
+            color: Colors.black
+          ),
           scaffoldBackgroundColor: ThemeHelper().getisDark() ? Colors.black :PrimaryColor,
           cardColor: Colors.grey[150],
           fontFamily: 'Dubai',
@@ -86,8 +90,11 @@ class AppThemeDataService {
 
         //    colorScheme: lightScheme,
 
+       appBarTheme: AppBarTheme(
 
-
+         color: PrimColor
+       ),
+        primaryColor: PrimColor,
         backgroundColor: Color.fromRGBO(236, 239, 241, 1),
         textTheme: TextTheme(button: TextStyle(color: Colors.white)),
         fontFamily: 'Dubai',

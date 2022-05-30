@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
 
-        backgroundColor:PrimaryColor,
+        backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
         body: BlocProvider(
           create: (BuildContext context) => DataLoaderBloc(Default()),
           child: SingleChildScrollView(
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   waveDuration: Duration(seconds: 2),
                                   loadUntil: 0.82,
                                   boxWidth: 125,
-                                  boxBackgroundColor:PrimaryColor,
+                                  boxBackgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
                                   waveColor: Colors.red,
                                   textStyle: TextStyle(
                                       color:Colors.white,
@@ -108,19 +108,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: EdgeInsets.symmetric(
                             horizontal: mediaQueryWidth * 0.05),
                         child: TextFormField(
+
                             // cursorColor: Colors.blue,
                             style: const TextStyle(fontSize: 20),
                             controller: apiKey,
                             decoration: InputDecoration(
+
                               prefixIcon: Icon(Icons.key,color: Colors.red,),
                               filled: true,
-                              fillColor: Colors.white,
+                              fillColor:  ThemeHelper().getisDark()?Colors.black : Colors.white,
                               hintText: " Api Key",
                               enabledBorder: const OutlineInputBorder(
+
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                   borderSide: BorderSide(
-                                      width: 2, color: Colors.black12)),
+                                      width: 0, color: Colors.red)),
                               border: OutlineInputBorder(
                                 borderSide:
                                     const BorderSide(color: Colors.grey),
@@ -136,9 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             keyboardType: TextInputType.emailAddress),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.04,
+                        height: MediaQuery.of(context).size.height * 0.1,
                       ),
                       ElevatedButton(
+
                         onPressed: () {
                           if (apiKey.text.isEmpty) {
                             _formKey.currentState!.validate();
@@ -168,8 +172,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           padding: EdgeInsets.symmetric(
                               horizontal: mediaQueryWidth * 0.35,
                               vertical: mediaQueryHeight * 0.025),
-                          primary: Colors.white,
+                          primary:  ThemeHelper().getisDark()?Colors.black : PrimaryColor,
+                          shadowColor: Colors.red,
                           shape: RoundedRectangleBorder(
+
                             borderRadius: BorderRadius.circular(40.0),
                           ),
                         ),
