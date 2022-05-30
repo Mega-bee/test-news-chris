@@ -8,6 +8,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../Helpers/colors.dart';
+import '../../../hive/hive.dart';
 import '../webview/webview.dart';
 
 class NewsDetails extends StatefulWidget {
@@ -28,8 +29,9 @@ class _NewsDetailsState extends State<NewsDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PrimaryColor,
+      backgroundColor:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
       appBar: AppBar(
+        backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
         title: Text("Details"),
         centerTitle: true,
       ),
@@ -53,7 +55,7 @@ class _NewsDetailsState extends State<NewsDetails> {
                   child: Container(
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                      color: PrimaryColor,
+                      color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(28),
                     ),

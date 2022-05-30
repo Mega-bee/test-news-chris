@@ -87,8 +87,9 @@ class _NewsListOneState extends State<NewsListOne> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-        backgroundColor: PrimaryColor,
+       backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
         appBar: AppBar(
+          backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
           toolbarHeight: MediaQuery.of(context).size.height / 25,
           // leading: IconButton(
           //     icon: Icon(Icons.logout),
@@ -177,7 +178,7 @@ class _NewsListOneState extends State<NewsListOne> {
             //   },
             // ),
             PopupMenuButton(
-              color: PrimaryColor,
+              color:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
               icon: Icon(Icons.sort),
               itemBuilder: (context) {
                 return [
@@ -263,7 +264,7 @@ class _NewsListOneState extends State<NewsListOne> {
                       ),
                     ),
                     Container(
-                      color: PrimaryColor,
+                      color:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
                       height: MediaQuery.of(context).size.height * 0.034,
                       child: TextButton(
                         style: TextButton.styleFrom(
@@ -292,7 +293,7 @@ class _NewsListOneState extends State<NewsListOne> {
 
                     Container(
 
-                      color: PrimaryColor,
+                      color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
                       height: MediaQuery.of(context).size.height * 0.034,
                       child: TextButton(
                         style: TextButton.styleFrom(

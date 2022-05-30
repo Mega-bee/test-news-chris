@@ -46,7 +46,10 @@ class ThemeHelper{
   void setTheme(bool isDark){
     box3.put('theme', isDark);
   }
-  bool? getisDark(){
+  bool getisDark(){
+    if (box3.get('theme') ==null) {
+      return false;
+    }
     return box3.get('theme');
   }
 }

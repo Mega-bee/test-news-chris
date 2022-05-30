@@ -63,6 +63,7 @@ class AppThemeDataService {
               return PrimaryColor;
             }),
           ),
+          scaffoldBackgroundColor: ThemeHelper().getisDark() ? Colors.black :PrimaryColor,
           cardColor: Colors.grey[150],
           fontFamily: 'Dubai',
           elevatedButtonTheme: ElevatedButtonThemeData(

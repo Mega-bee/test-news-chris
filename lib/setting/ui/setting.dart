@@ -19,8 +19,9 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PrimaryColor,
+      backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
       appBar:AppBar(
+        backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
         title: Text(S.of(context).Settings),
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
@@ -34,7 +35,7 @@ SizedBox(height: MediaQuery.of(context).size.height*0.1,),
         Card(
           elevation: 5,
           shadowColor: Colors.red,
-          color: PrimaryColor,
+          color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
           child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -42,7 +43,7 @@ SizedBox(height: MediaQuery.of(context).size.height*0.1,),
             children: [
             Text(S.of(context).languages,style: TextStyle(color: Colors.white),),
             PopupMenuButton(
-              color: PrimaryColor,
+              color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
               icon: Icon(Icons.language,color: Colors.red,),
               itemBuilder: (context) {
                 return [
@@ -79,7 +80,7 @@ SizedBox(height: MediaQuery.of(context).size.height*0.1,),
         Card(
           elevation: 5,
           shadowColor: Colors.red,
-          color: PrimaryColor,
+          color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -87,7 +88,7 @@ SizedBox(height: MediaQuery.of(context).size.height*0.1,),
               children: [
                 Text(S.of(context).theme,style: TextStyle(color: Colors.white),),
                 PopupMenuButton(
-                  color: PrimaryColor,
+                  color:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
                   icon: Icon(Icons.color_lens,color: Colors.red,),
                   itemBuilder: (context) {
                     return [
@@ -110,10 +111,12 @@ SizedBox(height: MediaQuery.of(context).size.height*0.1,),
                     if (value == 1) {
 
                      AppThemeDataService().switchDarkMode(true);
+                     Navigator.pop(context);
 
                     }
                     if (value == 2) {
                       AppThemeDataService().switchDarkMode(false);
+                      Navigator.pop(context);
 
                     }
                   },

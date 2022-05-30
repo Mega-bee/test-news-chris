@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/hive/hive.dart';
 import 'package:news_app/news_module/model/NewsOne.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -31,7 +32,7 @@ class NewsCard extends StatelessWidget {
       },
       child: Card(
           clipBehavior: Clip.antiAlias,
-          color: PrimaryColor,
+          color:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
           shadowColor: Colors.white,
           elevation: 3,
           shape: RoundedRectangleBorder(
@@ -73,7 +74,7 @@ class NewsCard extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(10.0),
                       decoration: BoxDecoration(
-                        color: PrimaryColor,
+                        color:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(28),
                       ),
