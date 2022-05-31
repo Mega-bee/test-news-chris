@@ -23,9 +23,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "Degree": MessageLookupByLibrary.simpleMessage("درجة"),
+        "Details": MessageLookupByLibrary.simpleMessage("تفاصيل الخبر"),
         "English": MessageLookupByLibrary.simpleMessage("الانخليزية"),
         "FROM": MessageLookupByLibrary.simpleMessage("من"),
+        "ForMoreInfoVisitTheLinkBellow": MessageLookupByLibrary.simpleMessage(
+            "لمزيد من المعلومات قم بزيارة الرابط أدناه"),
+        "Humidity": MessageLookupByLibrary.simpleMessage("الرطوبة"),
         "LOGIN": MessageLookupByLibrary.simpleMessage("ادخل ناطرينك"),
+        "Main": MessageLookupByLibrary.simpleMessage("الطقس العام"),
         "NEWS": MessageLookupByLibrary.simpleMessage("الأخبار"),
         "NEWS1": MessageLookupByLibrary.simpleMessage("الأخبار المباشرة"),
         "No": MessageLookupByLibrary.simpleMessage("كلا"),
@@ -35,13 +41,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "SearchByDate":
             MessageLookupByLibrary.simpleMessage("البحث حسب التاريخ"),
         "Settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+        "Speed": MessageLookupByLibrary.simpleMessage("سرعة"),
         "TO": MessageLookupByLibrary.simpleMessage("إلى"),
+        "Temp": MessageLookupByLibrary.simpleMessage("الحرارة"),
+        "Weather": MessageLookupByLibrary.simpleMessage("الطقس"),
         "WelcomeToLive": MessageLookupByLibrary.simpleMessage("مرحبا بكم في"),
         "Yes": MessageLookupByLibrary.simpleMessage("نعم"),
         "dark": MessageLookupByLibrary.simpleMessage("الاسود"),
         "languages": MessageLookupByLibrary.simpleMessage("اللغة"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "theme": MessageLookupByLibrary.simpleMessage("لون التطبيق"),
-        "white": MessageLookupByLibrary.simpleMessage("الابيض")
+        "white": MessageLookupByLibrary.simpleMessage("الابيض"),
+        "wind": MessageLookupByLibrary.simpleMessage("الرياح")
       };
 }

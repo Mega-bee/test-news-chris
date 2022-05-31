@@ -23,9 +23,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "Degree": MessageLookupByLibrary.simpleMessage("Degree"),
+        "Details": MessageLookupByLibrary.simpleMessage("Details"),
         "English": MessageLookupByLibrary.simpleMessage("English"),
         "FROM": MessageLookupByLibrary.simpleMessage("FROM"),
+        "ForMoreInfoVisitTheLinkBellow": MessageLookupByLibrary.simpleMessage(
+            "For More Info Visit The Link Bellow"),
+        "Humidity": MessageLookupByLibrary.simpleMessage("Humidity"),
         "LOGIN": MessageLookupByLibrary.simpleMessage("Log In"),
+        "Main": MessageLookupByLibrary.simpleMessage("Main"),
         "NEWS": MessageLookupByLibrary.simpleMessage("News"),
         "NEWS1": MessageLookupByLibrary.simpleMessage("News"),
         "No": MessageLookupByLibrary.simpleMessage("No"),
@@ -34,7 +40,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Required": MessageLookupByLibrary.simpleMessage("Required *"),
         "SearchByDate": MessageLookupByLibrary.simpleMessage("Search By Date"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "Speed": MessageLookupByLibrary.simpleMessage("Speed"),
         "TO": MessageLookupByLibrary.simpleMessage("TO"),
+        "Temp": MessageLookupByLibrary.simpleMessage("Temp"),
+        "Weather": MessageLookupByLibrary.simpleMessage("Weather"),
         "WelcomeToLive":
             MessageLookupByLibrary.simpleMessage("Welcome To Live"),
         "Yes": MessageLookupByLibrary.simpleMessage("Yes"),
@@ -42,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "languages": MessageLookupByLibrary.simpleMessage("languages"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme Mode"),
-        "white": MessageLookupByLibrary.simpleMessage("Light")
+        "white": MessageLookupByLibrary.simpleMessage("Light"),
+        "wind": MessageLookupByLibrary.simpleMessage("Wind")
       };
 }

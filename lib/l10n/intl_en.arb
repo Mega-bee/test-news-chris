@@ -19,6 +19,15 @@
   "white": "Light",
   "logout": "Logout",
   "Yes":"Yes",
-  "No":"No"
+  "No":"No",
+  "ForMoreInfoVisitTheLinkBellow":"For More Info Visit The Link Bellow",
+  "Weather":"Weather",
+  "Humidity":"Humidity",
+  "Temp":"Temp",
+  "Main":"Main",
+  "Details":"Details",
+  "wind":"Wind",
+  "Speed":"Speed",
+  "Degree":"Degree"
 
 }

@@ -9,6 +9,7 @@ import 'package:news_app/Weather/model/weather_model.dart';
 
 import '../../Helpers/colors.dart';
 import '../../Views/connactionError.dart';
+import '../../generated/l10n.dart';
 import '../../hive/hive.dart';
 import '../../network/DataLoaderBlocWeather.dart';
 import '../../network/WebUrl.dart';
@@ -25,7 +26,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
 
   late DataLoaderBlocWeather weatherBloc;
-  bool tempr =true;
+  bool tempr =false;
 
  DateTime date= DateTime.parse(DateTime.now().toString());
   @override
@@ -34,7 +35,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
       appBar: AppBar(
         shadowColor: Colors.red,
-        title: Text("Weather"),
+        title: Text("${S.of(context).Weather}"),
       ),
       body:
         BlocBuilder<DataLoaderBlocWeather, GlobalState>(
@@ -77,7 +78,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:
                   [
-                    Icon(FontAwesomeIcons.solidSun,size: 80,color: Colors.yellow,),
+                    Container(
+                      height: 140,
+                      width: 140,
+                      child: Card(
+                        shadowColor: Colors.amber,
+                          shape: RoundedRectangleBorder(
+
+                            borderRadius: BorderRadius.circular(65.0),
+                          ),
+                          color: Colors.black,
+                          elevation: 35,
+
+                          child: Icon(FontAwesomeIcons.solidSun,size: 80,color: Colors.amber[600],)),
+                    ),
                     SizedBox(width: MediaQuery.of(context).size.width*0.2,),
 
                     SizedBox(width: MediaQuery.of(context).size.width*0.04,),
@@ -101,96 +115,137 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children:[
-                      Column(
-                        children: [Row(
-                            children: [
-                              Icon(FontAwesomeIcons.temperatureFull,color: Colors.white,),
-                              SizedBox(width: MediaQuery.of(context).size.width*0.06,),
-                              Text(
-                                "Main ",style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 30
+                      Container(
+                        width: MediaQuery.of(context).size.width*0.5,
+                        height: MediaQuery.of(context).size.width*0.54,
+                        child: Card(
+                          color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
+                          shadowColor: Colors.white,
+                          margin: EdgeInsets.all(5),
+                          shape:RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.white70, width: 0),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              children: [Row(
+                                  children: [
+                                    Icon(FontAwesomeIcons.temperatureFull,color: Colors.white,),
+                                    SizedBox(width: MediaQuery.of(context).size.width*0.02,),
+                                    Text(
+                                      "${S.of(context).Main} ",style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold
 
-                              ),
-                              ),
-                            ] ),
-                          SizedBox(height:  MediaQuery.of(context).size.height*0.03,),
+                                    ),
+                                    ),
+                                  ] ),
+                                SizedBox(height:  MediaQuery.of(context).size.height*0.02,),
 
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: TextButton(
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: TextButton(
+          style: TextButton.styleFrom(
+          primary: Colors.red,
+
+          ),
+
           onPressed: (){
             setState(() {
               tempr=!tempr;
             });
           }
-                              ,
-                              child:
-                              Text(
-                              tempr==false?
-                                "Temp : ${Data.main!.temp} °k":
-          "Temp : ${(Data.main!.temp!-273.15).toStringAsFixed(1)} °C  "
+                                    ,
+                                    child:
+                                    Text(
+                                    tempr==false?
+                                      "${S.of(context).Temp} : ${(Data.main!.temp)!.toStringAsFixed(1)} °k":
+          "${S.of(context).Temp} : ${(Data.main!.temp!-273.15).toStringAsFixed(1)} °C  "
 
           ,style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                        fontWeight: FontWeight.bold
+
+                                  ),
+
+                                    )
+
+                                  ),
+                                ),
+                                SizedBox(height:  MediaQuery.of(context).size.height*0.03,),
+
+                                Text(
+
+                                  "${S.of(context).Humidity} : ${Data.main!.humidity} %",style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold
+
+                                ),
+                                ),
+                            ]),
+                          ),
+                        ),
+                      ),
+
+
+
+                Container(
+                  width: MediaQuery.of(context).size.width*0.5,
+                  height: MediaQuery.of(context).size.height*0.25,
+                  child: Card(
+
+                    shadowColor: Colors.white,
+                    margin: EdgeInsets.all(5),
+                    shape:RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.white70, width: 0),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+
+color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(FontAwesomeIcons.wind,color: Colors.white,),
+SizedBox(width: MediaQuery.of(context).size.width*0.02,),
+                              Text(
+                              "${S.of(context).wind} ",style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 25,
+                                fontWeight: FontWeight.bold
 
                             ),
+                        ),
+                         ] ),
+                          SizedBox(height:  MediaQuery.of(context).size.height*0.03,),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                                "${S.of(context).Speed} : ${Data.wind!.speed}",style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,   fontWeight: FontWeight.bold
 
-                              )
-
+                            ),
                             ),
                           ),
-                          SizedBox(height:  MediaQuery.of(context).size.height*0.03,),
-
+                          SizedBox(height:  MediaQuery.of(context).size.height*0.04,),
                           Text(
-
-                            "Humidity : ${Data.main!.humidity} %",style: TextStyle(
+                            "${S.of(context).Degree} : ${Data.wind!.deg} °",style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold
 
                           ),
                           ),
                       ]),
-
-
-
-                Card(
-color: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Icon(FontAwesomeIcons.wind,color: Colors.white,),
-SizedBox(width: MediaQuery.of(context).size.width*0.06,),
-                          Text(
-                          "Wind ",style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 30
-
-                        ),
                     ),
-                     ] ),
-                      SizedBox(height:  MediaQuery.of(context).size.height*0.05,),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            "Speed : ${Data.wind!.speed}",style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20
-
-                        ),
-                        ),
-                      ),
-                      SizedBox(height:  MediaQuery.of(context).size.height*0.04,),
-                      Text(
-                        "Degree : ${Data.wind!.deg} °",style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20
-
-                      ),
-                      ),
-                  ]),
+                  ),
                 ),
                 ])]);
 
@@ -210,8 +265,8 @@ SizedBox(width: MediaQuery.of(context).size.width*0.06,),
           Urls.DOMAIN2,
           requestType: RequestType.get,
           query: FilterWeatherRequest(
-            lat: 33.8938,
-            long: 35.5018,
+            lat: 33.8463,
+            long: 35.9020,
           ).toJson(),
         ),
       );

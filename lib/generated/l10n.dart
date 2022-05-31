@@ -249,6 +249,96 @@ class S {
       args: [],
     );
   }
+
+  /// `For More Info Visit The Link Bellow`
+  String get ForMoreInfoVisitTheLinkBellow {
+    return Intl.message(
+      'For More Info Visit The Link Bellow',
+      name: 'ForMoreInfoVisitTheLinkBellow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weather`
+  String get Weather {
+    return Intl.message(
+      'Weather',
+      name: 'Weather',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Humidity`
+  String get Humidity {
+    return Intl.message(
+      'Humidity',
+      name: 'Humidity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Temp`
+  String get Temp {
+    return Intl.message(
+      'Temp',
+      name: 'Temp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main`
+  String get Main {
+    return Intl.message(
+      'Main',
+      name: 'Main',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Details`
+  String get Details {
+    return Intl.message(
+      'Details',
+      name: 'Details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wind`
+  String get wind {
+    return Intl.message(
+      'Wind',
+      name: 'wind',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Speed`
+  String get Speed {
+    return Intl.message(
+      'Speed',
+      name: 'Speed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Degree`
+  String get Degree {
+    return Intl.message(
+      'Degree',
+      name: 'Degree',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

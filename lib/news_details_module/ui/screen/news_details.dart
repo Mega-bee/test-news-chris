@@ -8,6 +8,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../Helpers/colors.dart';
+import '../../../generated/l10n.dart';
 import '../../../hive/hive.dart';
 import '../webview/webview.dart';
 
@@ -32,7 +33,7 @@ class _NewsDetailsState extends State<NewsDetails> {
       backgroundColor:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
       appBar: AppBar(
         backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
-        title: Text("Details"),
+        title: Text("${S.of(context).Details}"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -130,7 +131,7 @@ class _NewsDetailsState extends State<NewsDetails> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Row(
-                  children:[ Text("For More Info Visit The Link Bellow",style: TextStyle(color: Colors.grey,
+                  children:[ Text("${S.of(context).ForMoreInfoVisitTheLinkBellow}",style: TextStyle(color: Colors.grey,
                   fontSize: 12,
                   ),),
                     // Image.asset("assets/images/emoji.jpeg",width: 18,height: 18,color: Colors.grey,)
