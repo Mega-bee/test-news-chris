@@ -5,7 +5,7 @@ import 'package:news_app/network/WebUrl.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import '../../../Helpers/colors.dart';
 import '../../../generated/l10n.dart';
-import '../../../network/DataLoaderBloc.dart';
+import '../../../network/DataLoaderBlocNews.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 import '../../../news_module/ui/screen/news-list-1.dart';

@@ -14,9 +14,9 @@
   "English": "English",
   "Arabic":"Arabic",
   "Settings": "Settings",
-  "theme": "Theme",
+  "theme": "Theme Mode",
   "dark":  "Dark",
-  "white": "white",
+  "white": "Light",
   "logout": "Logout",
   "Yes":"Yes",
   "No":"No"

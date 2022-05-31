@@ -1,19 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:news_app/localization/localization_service.dart';
 import 'package:news_app/news_module/ui/widget/NewsCard.dart';
 import '../../../Custom_page_route.dart';
 import '../../../Auth_Module/ui/screen/login.dart';
 import '../../../Helpers/colors.dart';
+import '../../../Weather/ui/weather_screen.dart';
 import '../../../generated/l10n.dart';
 import '../../../hive/hive.dart';
 import '../../../setting/ui/setting.dart';
 import '../../Filter/FilterRequest.dart';
 import '../../model/NewsOne.dart';
 import '../../../Views/connactionError.dart';
-import '../../../network/DataLoaderBloc.dart';
+import '../../../network/DataLoaderBlocNews.dart';
 import '../../../network/WebUrl.dart';
+
+
+
+
 
 class NewsListOne extends StatefulWidget {
   const NewsListOne({Key? key}) : super(key: key);
@@ -31,6 +37,7 @@ class _NewsListOneState extends State<NewsListOne> {
   bool _onsearch = true;
 
   late DataLoaderBloc newsListBloc;
+
   @override
   void initState() {
     _searchQuery.text = 'tesla';
@@ -45,6 +52,7 @@ class _NewsListOneState extends State<NewsListOne> {
         ).toJson(),
       ),
     );
+
     // TODO: implement initState
     super.initState();
   }
@@ -89,6 +97,18 @@ class _NewsListOneState extends State<NewsListOne> {
       resizeToAvoidBottomInset: false,
        backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
         appBar: AppBar(
+          leading:
+          IconButton(
+            icon:Icon(FontAwesomeIcons.cloudSun),
+         onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+          return WeatherScreen(
+
+          );
+          }));
+          },
+          ),
+
           backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
           toolbarHeight: MediaQuery.of(context).size.height / 25,
           // leading: IconButton(
@@ -380,6 +400,8 @@ class _NewsListOneState extends State<NewsListOne> {
     },
     label:  Text(S.of(context).Settings,style: TextStyle(color: PrimaryColor),),
     icon: const Icon(Icons.settings,color: Colors.red,),
+          splashColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
+
     backgroundColor: Colors.grey,
     ),
     );

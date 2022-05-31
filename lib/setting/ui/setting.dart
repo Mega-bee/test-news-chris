@@ -4,6 +4,7 @@ import 'package:news_app/theme/theme_service.dart';
 import '../../Auth_Module/ui/screen/login.dart';
 import '../../CustomAlertDialog/CustomAlert.dart';
 import '../../Helpers/colors.dart';
+import '../../Weather/ui/weather_screen.dart';
 import '../../generated/l10n.dart';
 import '../../hive/hive.dart';
 import '../../localization/localization_service.dart';
@@ -151,6 +152,7 @@ SizedBox(height: MediaQuery.of(context).size.height*0.1,),
         label:  Text(S.of(context).logout,style: TextStyle(color: PrimaryColor),),
         icon: const Icon(Icons.logout,color: Colors.red,),
         backgroundColor: Colors.grey,
+        splashColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
       ),
       floatingActionButtonLocation:
       FloatingActionButtonLocation.centerFloat,

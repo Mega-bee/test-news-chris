@@ -1,3 +1,4 @@
+import 'package:news_app/Weather/model/weather_model.dart';
 import 'package:news_app/news_module/model/NewsOne.dart';
 
 class WebServiceResponse {
@@ -14,5 +15,12 @@ class WebServiceResponse {
        data?.add(NewsOne.fromJson(element));
      }) ;
       }
+  }}
+class WeatherServiceResponse {
+  WeatherModule? weatherModule ;
+  WeatherServiceResponse(this.weatherModule);
+  WeatherServiceResponse.fromJson(Map<String, dynamic> item) {
+   weatherModule=WeatherModule.fromJson(item);
+
   }}
 

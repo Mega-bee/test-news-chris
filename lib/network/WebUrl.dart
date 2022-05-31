@@ -4,14 +4,15 @@ class Urls {
   // static const String QUERY =
   //     '?apiKey=7f01a1f8c35e43d89dd699dcf501cfea';
   static const String BASE_API = DOMAIN + '';
+  static const String DOMAIN2='https://api.openweathermap.org/data/2.5/weather';
 
-  static const String BASE_API_ACCOUNT = DOMAIN + '/api/';
+
   static const String BASE_API_PATIENTS = DOMAIN + '/api/';
   static const String BASE_API_NOTIFICATIONS = DOMAIN + '/api/';
 
   /*--------Auth-------------------*/
-  static const LOGIN = BASE_API_ACCOUNT + '/';
-  static const FORGET_PASS = BASE_API_ACCOUNT + '/';
+  // static const LOGIN = BASE_API_ACCOUNT + '/';
+  // static const FORGET_PASS = BASE_API_ACCOUNT + '/';
 
   /*--------home-------------------*/
   static const String NEWS_ONE = DOMAIN ;

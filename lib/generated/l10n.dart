@@ -190,10 +190,10 @@ class S {
     );
   }
 
-  /// `Theme`
+  /// `Theme Mode`
   String get theme {
     return Intl.message(
-      'Theme',
+      'Theme Mode',
       name: 'theme',
       desc: '',
       args: [],
@@ -210,10 +210,10 @@ class S {
     );
   }
 
-  /// `white`
+  /// `Light`
   String get white {
     return Intl.message(
-      'white',
+      'Light',
       name: 'white',
       desc: '',
       args: [],

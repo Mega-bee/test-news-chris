@@ -41,7 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dark": MessageLookupByLibrary.simpleMessage("Dark"),
         "languages": MessageLookupByLibrary.simpleMessage("languages"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
-        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
-        "white": MessageLookupByLibrary.simpleMessage("white")
+        "theme": MessageLookupByLibrary.simpleMessage("Theme Mode"),
+        "white": MessageLookupByLibrary.simpleMessage("Light")
       };
 }

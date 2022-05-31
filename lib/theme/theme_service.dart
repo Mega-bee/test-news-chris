@@ -33,7 +33,7 @@ class AppThemeDataService {
           brightness: Brightness.dark,
           colorScheme: darkScheme,
           useMaterial3: true,
-          primarySwatch: Colors.green,
+          primarySwatch: Colors.red,
           focusColor: Colors.black,
           textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(primary: Colors.white70)),
