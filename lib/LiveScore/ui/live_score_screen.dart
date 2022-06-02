@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../Custom_page_route.dart';
+import '../../Helpers/colors.dart';
 import '../../Model/WebServiceResponse.dart';
 import '../../Views/connactionError.dart';
+import '../../hive/hive.dart';
 import '../../network/DataLoaderBlocLiveScore.dart';
 import '../../network/WebUrl.dart';
 import '../Request/filter_request.dart';
@@ -25,6 +27,7 @@ class _LiveScoreState extends State<LiveScore> {
   late Football football ;
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeHelper().getisDark()?Colors.black : PrimaryColor,
       appBar: AppBar(
         title: Text("LiveScore"),
       ),
