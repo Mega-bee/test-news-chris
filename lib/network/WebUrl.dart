@@ -5,6 +5,7 @@ class Urls {
   //     '?apiKey=7f01a1f8c35e43d89dd699dcf501cfea';
   static const String BASE_API = DOMAIN + '';
   static const String DOMAIN2='https://api.openweathermap.org/data/2.5/weather';
+  static const String DOMAIN3='https://livescore6.p.rapidapi.com/matches/v2/list-by-date';
 
 
   static const String BASE_API_PATIENTS = DOMAIN + '/api/';

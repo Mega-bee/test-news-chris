@@ -7,6 +7,7 @@ import 'package:news_app/news_module/ui/widget/NewsCard.dart';
 import '../../../Custom_page_route.dart';
 import '../../../Auth_Module/ui/screen/login.dart';
 import '../../../Helpers/colors.dart';
+import '../../../LiveScore/ui/live_score_screen.dart';
 import '../../../Weather/ui/weather_screen.dart';
 import '../../../generated/l10n.dart';
 import '../../../hive/hive.dart';
@@ -197,6 +198,12 @@ class _NewsListOneState extends State<NewsListOne> {
             //     }
             //   },
             // ),
+            IconButton(onPressed: () {
+    Navigator.push(
+    context,
+    CustomPageRoute(child:LiveScore()));
+
+    }, icon: Icon(Icons.sports_soccer)),
             PopupMenuButton(
               color:ThemeHelper().getisDark()?Colors.black : PrimaryColor,
               icon: Icon(Icons.sort),

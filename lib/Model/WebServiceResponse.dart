@@ -1,6 +1,8 @@
 import 'package:news_app/Weather/model/weather_model.dart';
 import 'package:news_app/news_module/model/NewsOne.dart';
 
+import '../LiveScore/model/live_score.dart';
+
 class WebServiceResponse {
   String? status;
   String? errorMessage;
@@ -23,4 +25,11 @@ class WeatherServiceResponse {
    weatherModule=WeatherModule.fromJson(item);
 
   }}
+// class FootballServiceResponse {
+//   Football? football ;
+//   FootballServiceResponse(this.football);
+//   FootballServiceResponse.fromJson(Map<String, dynamic> item) {
+//     football=Football.fromJson(item);
+//
+//   }}
 
