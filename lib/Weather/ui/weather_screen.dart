@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:news_app/Model/WebServiceResponse.dart';
 import 'package:news_app/Weather/Request/filter_request.dart';
 import 'package:news_app/Weather/model/weather_model.dart';
@@ -27,7 +28,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   late DataLoaderBlocWeather weatherBloc;
   bool tempr =false;
-
+  late double value;
  DateTime date= DateTime.parse(DateTime.now().toString());
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,24 @@ class _WeatherScreenState extends State<WeatherScreen> {
           if (state is Loading) {
             print("Loading");
             return Center(
-              child: CircularProgressIndicator(color: Colors.white),
+              child: TweenAnimationBuilder(
+
+                tween: Tween(begin: 0.0,end: 1.0),
+                duration: Duration(seconds: 1),
+
+
+                builder: (context, Value,_)=>SizedBox(
+                  width: 60.0,
+                  height: 80.0,
+
+
+
+                child:Lottie.asset("assets/images/64906-sunny.json",
+                    height: 300,
+                    width: 50,
+
+                    reverse: true)
+              ),),
             );
           } else if (state is ConnectionError) {
             print("Connection error");
@@ -87,21 +105,34 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
                             borderRadius: BorderRadius.circular(65.0),
                           ),
-                          color: Colors.black,
-                          elevation: 35,
+                          color: Colors.black12,
+                          elevation: 45,
 
-                          child: Icon(FontAwesomeIcons.solidSun,size: 80,color: Colors.amber[600],)),
+
+                          child:Image.network("http://openweathermap.org/img/w/${Data.weather![0].icon}.png",
+                              fit: BoxFit.cover,
+                            height: 1200.2,
+                            width: 1200,
+
+
+
+
+                          ),),
                     ),
+
                     SizedBox(width: MediaQuery.of(context).size.width*0.2,),
 
                     SizedBox(width: MediaQuery.of(context).size.width*0.04,),
                     Column(children:[
+
                       Row(children:[
                         Icon(FontAwesomeIcons.locationDot,color: Colors.red,size: 18,),
                         SizedBox(width: MediaQuery.of(context).size.width*0.01, ),
                         Text("${Data.name!}               ",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
 
+
                       ]),
+
                       SizedBox(height: MediaQuery.of(context).size.height*0.01, ),
                       Row(children: [
                         Icon(FontAwesomeIcons.clock,color: Colors.red,size: 15,),
@@ -109,6 +140,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         Text(DateFormat.yMMMMd().format(date).toString(),style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)],),
                     ]
                     ),
+
                 ]),
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.04, ),
@@ -243,11 +275,14 @@ SizedBox(width: MediaQuery.of(context).size.width*0.02,),
 
                           ),
                           ),
+
                       ]),
                     ),
                   ),
                 ),
-                ])]);
+                ]),
+
+              ]);
 
 
           }
